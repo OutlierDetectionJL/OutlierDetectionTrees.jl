@@ -1,6 +1,9 @@
 using OutlierDetectionTrees
-using Test
+using OutlierDetectionTest
 
-@testset "OutlierDetectionTrees.jl" begin
-    # Write your tests here.
-end
+test_meta.(eval.(OutlierDetectionTrees.MODELS))
+
+data = TestData()
+run_test(detector) = test_detector(detector, data)
+
+run_test(IForestDetector())
